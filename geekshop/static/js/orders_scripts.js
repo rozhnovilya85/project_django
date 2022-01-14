@@ -104,3 +104,5 @@ window.onload = function () {
         removed: deleteOrderItem
     });
 }
+
+ // fsd
