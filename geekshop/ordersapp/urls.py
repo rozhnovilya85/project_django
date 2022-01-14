@@ -3,14 +3,11 @@ from ordersapp import views as ordersapp
 app_name = 'ordersapp'
 
 urlpatterns = [
-    path('', ordersapp.OrderListView, name='list'),
-    path('create/', ordersapp.CreateListView, name='create'),
-    path('update/<pk>/', ordersapp.UpdateListView, name='update'),
-    path('read/<pk>/', ordersapp.DetailListView, name='read'),
-    path('delete/<pk>/', ordersapp.DeleteListView, name='delete'),
-    path('complete/<pk>/', ordersapp.complete(), name='complete'),
-
-
-
+    path('', ordersapp.OrderListView.as_view(), name='list'),
+    path('create/', ordersapp.CreateListView.as_view(), name='create'),
+    path('update/<pk>/', ordersapp.UpdateListView.as_view(), name='update'),
+    path('read/<pk>/', ordersapp.DetailListView.as_view(), name='read'),
+    path('delete/<pk>/', ordersapp.DeleteListView.as_view(), name='delete'),
+    path('complete/<pk>/', ordersapp.complete, name='complete'),
 
 ]

@@ -36,6 +36,9 @@ class Order(models.Model):
         _items = self.orderitems.select_related()
         return sum(list(map(lambda x: x.quantity * x.product.price, _items)))
 
+    def delete(self, using=None, keep_parents=False):
+        self.is_active = False
+        self.save()
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order,
@@ -50,5 +53,9 @@ class OrderItem(models.Model):
 
     def get_product_cost(self):
         return self.product.price * self.quantity
+
+    @staticmethod
+    def get_item(pk):
+        return OrderItem.objects.get(pk=pk)
 
 
